@@ -51,7 +51,7 @@ export default function MembersPage() {
             that sounds like your kind of work, let us talk.
           </p>
           <div className="mt-8">
-            <Button href="/contact">View Open Roles</Button>
+            <Button disabled className="opacity-50 cursor-not-allowed">View Open Roles — Coming Soon</Button>
           </div>
         </div>
       </section>

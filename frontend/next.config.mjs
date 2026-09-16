@@ -2,6 +2,7 @@
 const nextConfig = {
   // Phase 1: static export — comment out output line when adding API routes (Phase 2+)
   output: "export",
+  trailingSlash: true,
 
   images: {
     // Required when using output: "export"
