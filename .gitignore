@@ -1,6 +1,7 @@
 # ─── Docs (internal planning) ───────────────────────────────────────────────
 docs/*.pdf
 
+
 # ─── Node / Next.js ─────────────────────────────────────────────────────────
 frontend/node_modules/
 frontend/.next/
@@ -37,7 +38,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
-
+*.pdf
 # ─── Kubernetes secrets ──────────────────────────────────────────────────────
 infra/k8s/**/*-secret.yml
 infra/helm/**/secrets.yaml
