@@ -7,31 +7,24 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // TODO: Replace GOOGLE_FORM_ACTION_URL and entry.XXX IDs with your Google Form values
-  const GOOGLE_FORM_URL = "GOOGLE_FORM_ACTION_URL";
-
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
 
     try {
       const formData = new FormData(e.currentTarget);
-      const body = new URLSearchParams({
-        "entry.name": formData.get("name") as string,
-        "entry.phone": formData.get("phone") as string,
-        "entry.email": formData.get("email") as string,
-        "entry.subject": formData.get("subject") as string,
-        "entry.message": formData.get("message") as string,
-      });
 
-      await fetch(GOOGLE_FORM_URL, {
+      const res = await fetch("https://formsubmit.co/ajax/cirruscaleltd@gmail.com", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
       });
 
-      setSubmitted(true);
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
     } catch {
       alert("Something went wrong. Please try again.");
     } finally {
@@ -57,6 +50,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      <input type="hidden" name="_subject" value="New CirruScale Contact Form Submission" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" className="hidden" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="name">
