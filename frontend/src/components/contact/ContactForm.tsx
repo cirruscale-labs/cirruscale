@@ -11,19 +11,22 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-    const name = formData.get("name") as string;
-    const phone = formData.get("phone") as string;
-    const email = formData.get("email") as string;
-    const subject = formData.get("subject") as string;
-    const message = formData.get("message") as string;
+    try {
+      const formData = new FormData(e.currentTarget);
+      formData.append("form-name", "contact");
 
-    const body = `Name: ${name}\nPhone: ${phone || "N/A"}\nEmail: ${email}\n\n${message}`;
-    const mailtoLink = `mailto:cirruscaleltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
 
-    setLoading(false);
-    setSubmitted(true);
+      setSubmitted(true);
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -43,7 +46,8 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5" data-netlify="true" name="contact">
+      <input type="hidden" name="form-name" value="contact" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="name">

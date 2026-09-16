@@ -28,7 +28,16 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Form + Info */}
+      {/* Hidden form for Netlify bot detection */}
+      <form name="contact" data-netlify="true" hidden>
+        <input type="text" name="name" />
+        <input type="tel" name="phone" />
+        <input type="email" name="email" />
+        <input type="text" name="subject" />
+        <textarea name="message" />
+      </form>
+
+      {/* Form */}
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto">
