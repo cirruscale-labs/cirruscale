@@ -4,7 +4,7 @@ import EventCard from "@/components/resources/EventCard";
 
 export const metadata: Metadata = {
   title: "Events",
-  description: "Cirruscale conferences, workshops, and webinars for AI infrastructure engineers.",
+  description: "CirruScale conferences, workshops, and webinars for backend and cloud engineers.",
 };
 
 export default function EventsPage() {
@@ -16,7 +16,7 @@ export default function EventsPage() {
       {/* Header */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Events</p>
@@ -24,7 +24,7 @@ export default function EventsPage() {
             Learn, Build, Connect
           </h1>
           <p className="mt-5 text-slate-400 text-lg">
-            Conferences, workshops, and open office hours for AI infrastructure engineers.
+            Conferences, workshops, and open office hours for backend and cloud engineers.
             All events welcome practitioners of every experience level.
           </p>
         </div>

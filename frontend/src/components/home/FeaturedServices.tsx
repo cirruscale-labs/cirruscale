@@ -7,11 +7,21 @@ export default function FeaturedServices() {
   const services = getServices();
 
   return (
-    <section className="py-24 bg-brand-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative overflow-hidden">
+      {/* Glow blobs */}
+      <div
+        className="absolute top-20 right-1/3 w-80 h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, #60A5FA, transparent)" }}
+      />
+      <div
+        className="absolute bottom-20 left-1/3 w-64 h-64 rounded-full opacity-10 blur-3xl pointer-events-none"
+        style={{ background: "radial-gradient(circle, #38BDF8, transparent)" }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="Expert Services, End to End"
-          subtitle="From architecture design to 24/7 managed operations — our engineering team has done it before and can do it for you."
+          title="What We Do"
+          subtitle="Full-stack development, containerization, CI/CD, Kubernetes, and cloud deployment — end to end."
           centered
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">

@@ -6,13 +6,13 @@ export default function CTASection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="rounded-3xl px-8 md:px-16 py-16 text-center relative overflow-hidden"
-          style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+          style={{ background: "transparent" }}
         >
           {/* Glow */}
           <div
             className="absolute inset-0 opacity-20 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(circle at 50% 50%, #2563EB, transparent 70%)",
+              backgroundImage: "radial-gradient(circle at 50% 50%, #60A5FA, transparent 70%)",
             }}
           />
 
@@ -21,18 +21,18 @@ export default function CTASection() {
               Get Started Today
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Your first cluster in
+              Push code. We handle
               <br />
-              under 60 seconds.
+              the rest.
             </h2>
             <p className="mt-5 text-slate-400 text-lg max-w-xl mx-auto">
-              No long sales cycles. No infrastructure provisioning tickets. Talk to one of our
-              engineers and have GPUs running today.
+              No DevOps headaches. No cloud configuration rabbit holes. Talk to one of our
+              engineers and get your app deployed today.
             </p>
             <div className="mt-10 flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="px-8 py-3.5 rounded-xl text-sm font-semibold text-brand-primary bg-white hover:bg-blue-50 transition-colors"
+                className="px-8 py-3.5 rounded-xl text-sm font-semibold text-brand-dark bg-white hover:bg-gray-200 transition-colors"
               >
                 Talk to an Engineer
               </Link>

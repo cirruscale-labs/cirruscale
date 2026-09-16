@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Team",
-  description: "Meet the engineers and product leaders behind Cirruscale.",
+  description: "Meet the engineers and product leaders behind CirruScale.",
 };
 
 export default function MembersPage() {
@@ -16,7 +16,7 @@ export default function MembersPage() {
       {/* Header */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">The Team</p>
@@ -24,8 +24,8 @@ export default function MembersPage() {
             Built by Engineers, for Engineers
           </h1>
           <p className="mt-5 text-slate-400 text-lg">
-            Our team has built GPU infrastructure at some of the world&apos;s largest technology
-            companies. We started Cirruscale to make that expertise available to everyone.
+            Two engineers who have built backend systems, cloud infrastructure, and DevOps pipelines
+            at scale. Click on a profile to see the full technical background.
           </p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export default function MembersPage() {
       {/* Team grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {members.map((member) => (
               <MemberCard key={member.id} member={member} />
             ))}
@@ -42,13 +42,13 @@ export default function MembersPage() {
       </section>
 
       {/* Careers CTA */}
-      <section className="py-20 bg-brand-light">
+      <section className="py-20">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <p className="text-3xl text-brand-primary">👋</p>
           <h2 className="text-3xl font-bold text-brand-primary mt-4">Join the team</h2>
           <p className="mt-4 text-brand-muted">
-            We are a small team solving genuinely hard problems in distributed systems and
-            GPU infrastructure. If that sounds like your kind of work, let us talk.
+            We are a small team that builds backends and handles cloud infrastructure. If
+            that sounds like your kind of work, let us talk.
           </p>
           <div className="mt-8">
             <Button href="/contact">View Open Roles</Button>

@@ -94,7 +94,7 @@ export default function BlogDetailPage({ params }: { params: { slug: string } })
 
       {/* Related posts */}
       {relatedBlogs.length > 0 && (
-        <section className="py-16 bg-brand-light border-t border-brand-border">
+        <section className="py-16 border-t border-brand-border">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <h2 className="text-xl font-bold text-brand-primary mb-8">More from the blog</h2>
             <div className="space-y-6">

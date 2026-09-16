@@ -10,7 +10,13 @@
   }
 
   body {
-    @apply bg-white text-brand-primary;
+    @apply text-brand-primary;
+    background-color: #0a0e1a;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+      radial-gradient(ellipse at 50% 0%, rgba(96,165,250,0.10) 0%, transparent 60%);
+    background-size: 80px 80px, 80px 80px, 100% 100%;
   }
 
   h1, h2, h3, h4 {

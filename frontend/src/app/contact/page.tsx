@@ -3,7 +3,7 @@ import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Talk to a Cirruscale engineer about GPU clusters, AI infrastructure, or enterprise plans.",
+  description: "Talk to a CirruScale engineer about backend development, cloud deployment, or DevOps.",
 };
 
 const CONTACT_INFO = [
@@ -33,7 +33,7 @@ export default function ContactPage() {
       {/* Header */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">

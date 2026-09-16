@@ -92,7 +92,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                style={{ background: "linear-gradient(135deg, #2563EB, #06B6D4)" }}
+                style={{ background: "linear-gradient(135deg, #60A5FA, #38BDF8)" }}
               >
                 Register Now
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +122,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-brand-muted mb-1">Hosted by</p>
-                <p className="text-sm text-brand-primary font-medium">Cirruscale</p>
+                <p className="text-sm text-brand-primary font-medium">CirruScale</p>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function EventDetailPage({ params }: { params: { slug: string } }
 
       {/* Other events */}
       {otherEvents.length > 0 && (
-        <section className="py-16 bg-brand-light border-t border-brand-border">
+        <section className="py-16 border-t border-brand-border">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <h2 className="text-xl font-bold text-brand-primary mb-8">More events</h2>
             <div className="space-y-6">

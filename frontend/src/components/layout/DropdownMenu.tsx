@@ -30,7 +30,7 @@ export default function DropdownMenu({ label, items }: Props) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-primary rounded-lg hover:bg-gray-50 transition-colors"
+        className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-primary rounded-lg hover:bg-white/5 transition-colors"
       >
         {label}
         <svg
@@ -44,7 +44,7 @@ export default function DropdownMenu({ label, items }: Props) {
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-brand-border py-2 z-50">
+        <div className="absolute top-full left-0 mt-2 w-56 bg-brand-light rounded-xl shadow-lg border border-brand-border py-2 z-50">
           {items.map((item) => (
             <Link
               key={item.href}

@@ -6,7 +6,7 @@ import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "CloudBurst, DataNexus, and InferGrid — the Cirruscale product suite for AI infrastructure.",
+  description: "Backend development, cloud DevOps, and managed operations — the CirruScale product suite.",
 };
 
 export default function ProductsPage() {
@@ -17,16 +17,16 @@ export default function ProductsPage() {
       {/* Header */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Our Products</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-white">
-            The Full AI Infrastructure Stack
+            Build. Deploy. Scale.
           </h1>
           <p className="mt-5 text-slate-400 text-lg">
-            Three integrated products covering compute, storage, and inference — designed to
-            work independently or as a unified platform.
+            Backend software in Go and Python, containerization, CI/CD, Kubernetes, and cloud
+            deployment — everything your project needs to go from code to production.
           </p>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Comparison table */}
-      <section className="py-20 bg-brand-light">
+      <section className="py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="Which product do you need?"
@@ -55,23 +55,23 @@ export default function ProductsPage() {
               <thead>
                 <tr className="border-b-2 border-brand-border">
                   <th className="text-left py-3 pr-6 text-brand-muted font-semibold">Use case</th>
-                  <th className="text-center py-3 px-4 text-brand-primary font-bold">CloudBurst</th>
-                  <th className="text-center py-3 px-4 text-brand-primary font-bold">DataNexus</th>
-                  <th className="text-center py-3 px-4 text-brand-primary font-bold">InferGrid</th>
+                  <th className="text-center py-3 px-4 text-brand-primary font-bold">Backend Dev</th>
+                  <th className="text-center py-3 px-4 text-brand-primary font-bold">Cloud & DevOps</th>
+                  <th className="text-center py-3 px-4 text-brand-primary font-bold">Managed Ops</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Model training (small to large runs)", true, true, false],
-                  ["Distributed data loading for training", false, true, false],
-                  ["Serving models in production", false, false, true],
-                  ["Hyperparameter sweeps / AutoML", true, false, false],
-                  ["A/B testing model versions", false, false, true],
-                  ["Petabyte-scale dataset storage", false, true, false],
-                  ["Low-latency batch inference", false, false, true],
-                  ["Fine-tuning foundation models", true, true, false],
+                  ["REST API / gRPC development", true, false, false],
+                  ["Docker containerization", false, true, false],
+                  ["CI/CD pipeline setup", false, true, false],
+                  ["Kubernetes deployment", false, true, true],
+                  ["Cloud provisioning (AWS/GCP/Azure)", false, true, true],
+                  ["24/7 monitoring & incident response", false, false, true],
+                  ["Database design & optimization", true, false, false],
+                  ["Cost optimization & scaling", false, true, true],
                 ].map(([useCase, cb, dn, ig]) => (
-                  <tr key={useCase as string} className="border-b border-brand-border hover:bg-white transition-colors">
+                  <tr key={useCase as string} className="border-b border-brand-border hover:bg-white/5 transition-colors">
                     <td className="py-3.5 pr-6 text-brand-primary">{useCase as string}</td>
                     {[cb, dn, ig].map((val, idx) => (
                       <td key={idx} className="py-3.5 px-4 text-center">
@@ -80,7 +80,7 @@ export default function ProductsPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
-                          <span className="text-slate-300">—</span>
+                          <span className="text-slate-600">—</span>
                         )}
                       </td>
                     ))}
@@ -97,7 +97,7 @@ export default function ProductsPage() {
         <div className="max-w-2xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-brand-primary">Not sure where to start?</h2>
           <p className="mt-4 text-brand-muted">
-            Our engineers will map your exact workload to the right product combination — for free.
+            Our engineers will map your exact use case to the right product combination — for free.
           </p>
           <div className="mt-8">
             <Button href="/contact">Talk to an Engineer</Button>

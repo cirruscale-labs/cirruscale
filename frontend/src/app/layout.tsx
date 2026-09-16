@@ -8,16 +8,16 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: {
-    default: "Cirruscale — Scale AI Infrastructure Without Limits",
-    template: "%s | Cirruscale",
+    default: "CirruScale — Software Engineering & Cloud Solutions",
+    template: "%s | CirruScale",
   },
   description:
-    "Cirruscale provides on-demand GPU clusters, intelligent distributed storage, and production-ready AI inference platforms for enterprise teams.",
-  keywords: ["GPU cloud", "AI infrastructure", "machine learning", "GPU clusters", "cloud computing"],
+    "Cloud deployment, CI/CD, Kubernetes, and infrastructure management on AWS, GCP, and Azure. We also build backend software in Go and Python.",
+  keywords: ["cloud solutions", "devops", "kubernetes", "ci/cd", "docker", "golang", "python", "aws", "gcp", "azure", "software engineering"],
   openGraph: {
-    title: "Cirruscale — Scale AI Infrastructure Without Limits",
-    description: "On-demand GPU clusters and AI infrastructure for enterprise teams.",
-    siteName: "Cirruscale",
+    title: "CirruScale — Software Engineering & Cloud Solutions",
+    description: "Cloud deployment, CI/CD, Kubernetes, and infrastructure on AWS, GCP, and Azure. Plus backend software in Go and Python.",
+    siteName: "CirruScale",
     type: "website",
   },
 };

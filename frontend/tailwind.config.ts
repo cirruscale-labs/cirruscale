@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          primary:  "#0F172A",
-          accent:   "#2563EB",
-          cyan:     "#06B6D4",
-          light:    "#F0F6FF",
-          surface:  "#FFFFFF",
-          border:   "#E2E8F0",
-          muted:    "#64748B",
+          primary:  "#EDEDED",
+          accent:   "#60A5FA",
+          cyan:     "#38BDF8",
+          light:    "#111111",
+          surface:  "#0A0A0A",
+          border:   "#1E1E1E",
+          muted:    "#9CA3AF",
+          dark:     "#080a0f",
         },
       },
       fontFamily: {
@@ -27,8 +28,8 @@ const config: Config = {
         "card-hover": "0 10px 30px -5px rgb(0 0 0 / 0.12)",
       },
       backgroundImage: {
-        "hero-gradient": "linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0C1A36 100%)",
-        "accent-gradient": "linear-gradient(135deg, #2563EB, #06B6D4)",
+        "hero-gradient": "linear-gradient(135deg, #0A0A0A 0%, #0F1218 60%, #0A0A0A 100%)",
+        "accent-gradient": "linear-gradient(135deg, #60A5FA, #38BDF8)",
       },
     },
   },

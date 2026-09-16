@@ -2,92 +2,102 @@ import { Blog } from "@/types/blog";
 
 export const blogs: Blog[] = [
   {
-    slug: "gpu-scheduling-harder-than-you-think",
-    title: "Why GPU Scheduling Is Harder Than You Think",
+    slug: "why-we-build-backends-in-go-and-python",
+    title: "Why We Build Backends in Go and Python",
     excerpt:
-      "GPUs are not CPUs. Scheduling a 64-GPU training job is not as simple as finding 64 free GPU slots — it is about topology, interconnect bandwidth, and avoiding the fragmentation that silently kills your throughput.",
-    coverGradient: "linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%)",
+      "Go for performance-critical services, Python for data-heavy workflows. Here is how we decide which language to use for each project — and why having both in our toolkit makes us faster.",
+    coverGradient: "linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)",
     author: "Sarah Mitchell",
     authorRole: "Co-founder & CTO",
     date: "September 10, 2026",
     readTime: "8 min read",
-    tags: ["Infrastructure", "GPU", "Distributed Systems"],
-    body: `GPUs are not CPUs. When you run a job on a CPU cluster, you are dealing with a homogeneous sea of cores that can be sliced, diced, and reassigned in milliseconds. GPUs are different — they are specialized silicon with deep memory hierarchies, NVLink interconnects, and strict topology requirements.
+    tags: ["Go", "Python", "Backend"],
+    body: `At CirruScale, we build backends in two languages: Go and Python. This is not a compromise — it is a deliberate choice that lets us pick the right tool for each project.
 
-Scheduling a 64-GPU training job is not as simple as finding 64 free GPU slots. It is about finding 64 GPUs with the right interconnect topology, sufficient host memory, compatible driver versions, and proximity to your training data.
+Go for Performance-Critical Services
 
-At Cirruscale, we spent the first year of CloudBurst's development almost entirely on the scheduler. Here is what we learned.
+When a client needs an API that handles thousands of concurrent requests, a real-time event processor, or a microservice that needs to be fast and memory-efficient, we reach for Go. Its goroutine model makes concurrency natural, it compiles to a single binary (which makes Docker images tiny), and the performance is close to C without the complexity.
 
-The Topology Problem
+A Go API gateway we built for a fintech client handles 50,000 requests per second on a single instance. Try that with Django.
 
-Modern training jobs using model parallelism need GPUs that can talk to each other at NVLink speeds — up to 600 GB/s — not PCIe speeds of 32 GB/s. Placing half your model on a node in one availability zone and the other half in another will destroy your training throughput. Our scheduler maintains a real-time topology graph of every GPU in our fleet and uses a weighted shortest-path algorithm to find the tightest cluster of interconnected GPUs for each incoming job.
+Python for Data and Rapid Prototyping
 
-The Fragmentation Problem
+When the project involves data pipelines, ML model serving, scientific computing, or needs to integrate with a rich ecosystem of libraries, Python is the right choice. FastAPI gives us excellent async performance, and the library ecosystem is unmatched for data work.
 
-After weeks of running heterogeneous workloads, GPU clusters develop a form of fragmentation. You end up with islands of free GPUs scattered across nodes that cannot be combined into a contiguous pool required by large jobs. We call this GPU island syndrome. Our background compaction process signals idle, preemptible workloads to checkpoint and migrate, consolidating free capacity without interrupting production training runs.
+We built a document processing pipeline for a legal tech client in Python that went from prototype to production in three weeks — including OCR, NLP classification, and a REST API.
 
-The Preemption Problem
+The Docker Story
 
-When a high-priority job arrives and no GPUs are free, you have a choice: queue the job or preempt something. Preempting a 72-hour training run is catastrophic if the model has not checkpointed recently. CloudBurst integrates checkpoint-aware preemption — it sends a checkpoint signal to workloads, waits for acknowledgment, verifies the checkpoint completed successfully, and only then reclaims the GPUs. The worst-case lost work is bounded by the workload's declared checkpoint interval.
+Both languages containerize beautifully but differently. Go services compile to static binaries — our Docker images are often under 15MB using scratch or distroless base images. Python services use multi-stage builds with slim base images, typically landing around 100-200MB.
 
-GPU scheduling at scale is a distributed systems problem wearing an infrastructure costume. Treat it accordingly.`,
+Either way, every backend we build ships as a Docker container with a CI/CD pipeline from day one. The client pushes code, and the rest is automated.
+
+How We Choose
+
+The decision framework is simple: if the project is primarily about throughput, concurrency, or systems-level work, we use Go. If it is about data processing, ML integration, or rapid iteration, we use Python. Some projects use both — a Go API gateway fronting Python microservices is a pattern we use often.`,
   },
   {
-    slug: "zero-to-ten-thousand-gpus",
-    title: "From Zero to 10,000 GPUs: Scaling CloudBurst",
+    slug: "docker-to-kubernetes-migration-guide",
+    title: "From Docker Compose to Kubernetes: A Practical Migration Guide",
     excerpt:
-      "Eighteen months ago CloudBurst ran on 12 GPUs in a single rack. Today it orchestrates over 10,000 GPUs across three regions. This is the unfiltered engineering story of how we got there — and what broke along the way.",
-    coverGradient: "linear-gradient(135deg, #5B21B6 0%, #4C1D95 100%)",
+      "Your app runs great on Docker Compose locally. Now you need it in production with auto-scaling, health checks, and zero-downtime deployments. Here is the path we take for every client.",
+    coverGradient: "linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%)",
     author: "Raj Patel",
     authorRole: "VP of Engineering",
     date: "August 28, 2026",
     readTime: "12 min read",
-    tags: ["Engineering", "Scale", "Architecture"],
-    body: `Eighteen months ago, CloudBurst ran on 12 GPUs in a single rack inside a co-location facility in Ashburn, Virginia. Today it orchestrates over 10,000 GPUs across three AWS regions and our own bare-metal fleet. This is the honest engineering story of how we scaled — including what broke badly enough to wake us up at 3am.
+    tags: ["Docker", "Kubernetes", "DevOps"],
+    body: `We do this migration for clients regularly — taking applications from Docker Compose on a single server to Kubernetes on a managed cloud provider. Here is the process we have refined over 50+ migrations.
 
-Month 1–3: The Monolith Phase
+Step 1: Audit the Docker Compose File
 
-Our first architecture was a single Go binary: scheduler, API server, monitoring, and billing logic all in one process. It worked fine at 12 GPUs. We shipped fast. Then a bug in the billing logic took down the scheduler. That was the day we understood the cost of coupling.
+Most Compose files we see have problems that need fixing before Kubernetes: hardcoded environment variables, volumes pointing to host paths, services that depend on startup order, and images that are not optimized. We fix these first. A clean Compose file translates more easily to Kubernetes manifests.
 
-Month 4–6: The Event Bus Migration
+Step 2: Optimize the Dockerfiles
 
-We broke the monolith into four services connected by a Kafka event bus: scheduler, API gateway, billing, and observability. Each service owned its data store. Deployments went from nerve-wracking to boring — which is exactly what you want. We also introduced Kubernetes at this stage, which gave us rolling deployments without downtime.
+Before we move to Kubernetes, we optimize every Dockerfile. Multi-stage builds, minimal base images, proper layer caching, and no secrets baked into images. This step alone often reduces image sizes by 60-80% and build times by half.
 
-Month 7–12: The Cross-Region Problem
+Step 3: Create Kubernetes Manifests
 
-Expanding to a second region exposed a distributed systems truth we should have anticipated: network partitions are not edge cases, they are inevitable. Our scheduler needed a consistent view of GPU availability across regions, but the latency of cross-region consensus was adding 800ms to every scheduling decision. We switched from a Raft consensus model for the full fleet state to a hierarchical approach: each region runs its own scheduler with full authority over local GPUs, and a global coordinator handles cross-region jobs only. P95 scheduling latency dropped from 800ms to 45ms.
+We translate each Compose service into Kubernetes Deployments, Services, and ConfigMaps. We use Helm charts for templating so the same manifests work across staging and production. Every manifest includes resource requests and limits, health checks (liveness and readiness probes), and proper labels for observability.
 
-Month 13–18: 10,000 GPUs and Counting
+Step 4: Set Up the CI/CD Pipeline
 
-The jump from 1,000 to 10,000 GPUs was less about code and more about operational discipline. We hired three SREs, wrote runbooks for every class of failure we had seen, and introduced chaos engineering with a weekly game day. Every on-call engineer now knows exactly what to do when the global coordinator goes down, when a region's Kafka cluster falls behind, or when a mass checkpoint storm saturates our object storage.
+Every push to main triggers: lint, test, build Docker image, push to registry, deploy to staging. A manual approval step promotes to production. We use GitHub Actions for most clients but support GitLab CI and Jenkins too. The pipeline includes rollback automation — if health checks fail after deployment, it reverts automatically.
 
-The lesson we keep re-learning: scale is not a technical problem, it is a sociotechnical one. The code matters. The team and the processes matter more.`,
+Step 5: Configure Observability
+
+Kubernetes without observability is flying blind. We set up Prometheus for metrics, Grafana for dashboards, and Loki for log aggregation. Every client gets alerts for pod restarts, high error rates, and resource saturation. This is not optional — it is part of every deployment.
+
+The result: your team pushes code to Git, and everything else is automated. That is the promise we deliver on.`,
   },
   {
-    slug: "hidden-cost-diy-ai-infrastructure",
-    title: "The Hidden Costs of DIY AI Infrastructure",
+    slug: "cloud-cost-optimization-real-numbers",
+    title: "Cloud Cost Optimization: Real Numbers From Real Projects",
     excerpt:
-      "Building your own GPU infrastructure feels cheaper until you account for the engineer-hours, the failed experiments, and the three-month delay to your first model in production. We ran the numbers.",
-    coverGradient: "linear-gradient(135deg, #065F46 0%, #064E3B 100%)",
+      "Most cloud cost advice is generic. We analyzed spend data from 30 client engagements and found the patterns that actually move the needle — with specific dollar figures.",
+    coverGradient: "linear-gradient(135deg, #1E40AF 0%, #1E3A8A 100%)",
     author: "Alex Chen",
     authorRole: "Co-founder & CEO",
     date: "August 5, 2026",
     readTime: "6 min read",
-    tags: ["Business", "Infrastructure", "Cost Analysis"],
-    body: `Every few months an engineering leader asks me: "Why would we pay for CloudBurst when we can just buy GPUs and run them ourselves?" It is a fair question. The answer is almost always the same: the sticker price of hardware is not the real cost of AI infrastructure.
+    tags: ["Cloud", "Cost Optimization", "DevOps"],
+    body: `Most cloud cost advice is generic: "right-size your instances," "use reserved capacity," "turn off idle resources." That advice is correct but incomplete. We analyzed spend data from 30 client engagements over the past two years and found the patterns that actually move the needle.
 
-The Engineering Tax
+The Compute Overprovisioning Tax
 
-Building a GPU cluster from bare metal is a 6–12 month engineering project, not a weekend task. You need to design the network topology, set up Infiniband or RoCE, configure CUDA-aware MPI, implement health checks that distinguish a flaky GPU from a failed node, build a scheduler, integrate monitoring, and write the runbooks. At an average fully-loaded engineering cost of $300,000 per engineer per year in a major metro, a three-engineer team spending six months on this is $450,000 — before a single GPU runs a training job.
+The average company we audit is overprovisioned by 40-60%. Not because engineers are wasteful, but because capacity planning is hard and the cost of under-provisioning (outages) feels higher than the cost of over-provisioning (money). The fix is not manual right-sizing — it is proper Kubernetes resource requests with Horizontal Pod Autoscaling. Once you set this up correctly, your compute scales with actual demand.
 
-The Utilization Reality
+The Database Spend Surprise
 
-Owned hardware sits idle. This is not an opinion — it is what the data shows. Enterprise GPU clusters average 35–55% utilization. The other 45–65% of the time you are paying for electricity, cooling, and depreciation on hardware that is not producing value. On a managed platform you pay for what you use. The elasticity alone often makes the math work.
+In 22 of 30 engagements, the managed database service was the single largest line item — often 35-45% of total cloud spend. The most impactful optimization was not switching databases. It was query optimization, connection pooling, and read replica routing. One client reduced their RDS bill by 60% just by adding pgbouncer and fixing three N+1 queries.
 
-The Opportunity Cost
+The Networking Blind Spot
 
-Perhaps the largest hidden cost is the delay to value. Every month your team spends wiring up infrastructure is a month your competitors are iterating on models. The companies that reach production AI fastest rarely built their infrastructure from scratch — they bought the commodity layer and invested in the differentiating layer: their data, their models, their product.
+Cross-AZ and cross-region data transfer charges are the most overlooked cost category. They do not show up as a single line item — they are spread across dozens of services. We found one client paying $18,000/month in cross-AZ transfer because their Kubernetes pods were randomly distributed across availability zones. Pinning related services to the same AZ cut that to $3,000.
 
-We are not saying managed infrastructure is right for every company. At very large scale — tens of thousands of GPUs running 80%+ utilized around the clock — owning hardware can make financial sense. But for the vast majority of AI teams, the real question is not "buy vs. build" — it is "what is the highest-value use of our engineers' time this quarter?"`,
+The Real ROI
+
+Across our 30 engagements, the median cost reduction was 38%, with a range of 15% to 67%. The engagements that achieved the highest savings shared a common trait: they invested in observability first. You cannot optimize what you cannot measure.`,
   },
 ];

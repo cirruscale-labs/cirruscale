@@ -4,7 +4,7 @@ import BlogCard from "@/components/resources/BlogCard";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Engineering insights, infrastructure deep-dives, and company stories from the Cirruscale team.",
+  description: "Engineering insights, infrastructure deep-dives, and company stories from the CirruScale team.",
 };
 
 export default function BlogsPage() {
@@ -15,7 +15,7 @@ export default function BlogsPage() {
       {/* Header */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
         <div className="relative max-w-3xl mx-auto px-4 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Blog</p>
@@ -23,8 +23,8 @@ export default function BlogsPage() {
             Engineering Insights
           </h1>
           <p className="mt-5 text-slate-400 text-lg">
-            Deep dives into GPU infrastructure, distributed systems, and the real-world
-            lessons from operating AI infrastructure at scale.
+            Deep dives into backend development, DevOps, cloud infrastructure, and the real-world
+            lessons from deploying software at scale.
           </p>
         </div>
       </section>

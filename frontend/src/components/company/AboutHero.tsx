@@ -1,27 +1,27 @@
 const PILLARS = [
   {
     label: "Mission",
-    text: "Make enterprise-grade AI infrastructure accessible to every engineering team — from two-person startups to Fortune 500s.",
-    color: "#2563EB",
+    text: "Help engineering teams build great software and deploy it to the cloud — without the DevOps headaches. From two-person startups to Fortune 500s.",
+    color: "#60A5FA",
   },
   {
     label: "Vision",
-    text: "A world where the gap between a model idea and a model in production is measured in minutes, not months.",
-    color: "#7C3AED",
+    text: "A world where going from code push to production deployment is measured in minutes, not months.",
+    color: "#38BDF8",
   },
   {
     label: "Founded",
-    text: "2022, San Francisco. Built by infrastructure engineers who were tired of building the same GPU cluster for the fifth time.",
-    color: "#059669",
+    text: "2022, San Francisco. Built by engineers who were tired of watching teams struggle with Docker, CI/CD, and cloud deployments instead of building features.",
+    color: "#3B82F6",
   },
 ];
 
 const MILESTONES = [
-  { year: "2022", event: "Founded in San Francisco. First CloudBurst cluster deployed for beta customers." },
-  { year: "2023", event: "Launched DataNexus. Crossed 100 enterprise customers. Series A — $18M." },
-  { year: "2024", event: "Opened second region (EU-West). Launched InferGrid. 1,000 GPUs under management." },
-  { year: "2025", event: "Series B — $62M. Third region (APAC). 10,000 GPUs. 50+ enterprise clients." },
-  { year: "2026", event: "InferGrid 2.0 with gRPC streaming. CloudScale Summit launched as annual flagship event." },
+  { year: "2022", event: "Founded in San Francisco. First client backend built and deployed to AWS." },
+  { year: "2023", event: "Expanded to full DevOps services. Crossed 20 clients. Series A — $18M." },
+  { year: "2024", event: "Opened EU operations. Multi-cloud support (AWS, GCP, Azure). 100+ projects delivered." },
+  { year: "2025", event: "Series B — $62M. APAC expansion. 40+ enterprise clients across three continents." },
+  { year: "2026", event: "Launched managed Kubernetes operations. CloudDeploy Conf as annual flagship event." },
 ];
 
 export default function AboutHero() {
@@ -30,32 +30,24 @@ export default function AboutHero() {
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)" }}
+        style={{ background: "transparent" }}
       >
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Our Story</p>
           <h1 className="text-5xl font-bold text-white leading-tight">
             We Build What We Wish Existed
           </h1>
           <p className="mt-6 text-slate-400 text-lg leading-relaxed">
-            Cirruscale was founded in 2022 by two infrastructure engineers who had spent the
-            better part of a decade watching AI teams lose months to the same infrastructure
-            problems. The tooling existed, the hardware existed — but nothing was designed to
-            work together at the speed that modern AI development demands.
+            CirruScale was founded by Tahshin and Saad — two backend engineers who spent years
+            watching teams lose months to DevOps complexity instead of shipping features.
+            The cloud providers existed, the tooling existed — but stitching it all together was
+            still a full-time job.
           </p>
           <p className="mt-4 text-slate-400 text-lg leading-relaxed">
-            We built Cirruscale to change that. Today our platform orchestrates over 10,000 GPUs
-            for 50+ enterprise clients across North America, Europe, and Asia-Pacific — and we
-            are still solving the same core problem we started with: making world-class AI
-            infrastructure invisible.
+            We built CirruScale to change that. Today we build full-stack software, then
+            handle Docker, CI/CD, Kubernetes, and cloud deployment — and we
+            are still solving the same core problem: letting engineering teams focus on code,
+            not infrastructure.
           </p>
         </div>
       </section>
@@ -82,7 +74,7 @@ export default function AboutHero() {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-brand-light">
+      <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-brand-primary mb-10 text-center">How We Work</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -92,7 +84,7 @@ export default function AboutHero() {
               { icon: "⚡", title: "Ship fast, iterate faster", desc: "We deploy to production multiple times a day. Perfection at the cost of speed is not a trade we make." },
               { icon: "🤝", title: "Customer as partner", desc: "Half of our product roadmap comes directly from customer Slack channels. We build what people actually need." },
             ].map((v) => (
-              <div key={v.title} className="bg-white rounded-2xl border border-brand-border p-6">
+              <div key={v.title} className="bg-brand-light rounded-2xl border border-brand-border p-6">
                 <span className="text-3xl">{v.icon}</span>
                 <h3 className="mt-3 text-base font-bold text-brand-primary">{v.title}</h3>
                 <p className="mt-2 text-sm text-brand-muted leading-relaxed">{v.desc}</p>
@@ -115,7 +107,7 @@ export default function AboutHero() {
                     <span className="text-sm font-bold text-brand-accent">{m.year}</span>
                   </div>
                   <div className="relative flex-shrink-0 mt-1">
-                    <div className="w-4 h-4 rounded-full border-2 border-brand-accent bg-white" />
+                    <div className="w-4 h-4 rounded-full border-2 border-brand-accent bg-brand-dark" />
                   </div>
                   <p className="text-brand-primary text-sm leading-relaxed pt-0.5">{m.event}</p>
                 </div>

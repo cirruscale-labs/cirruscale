@@ -8,15 +8,15 @@ const NAV_ITEMS = [
   {
     label: "Our Works",
     children: [
-      { label: "Products", href: "/works/products", desc: "CloudBurst, DataNexus, InferGrid" },
-      { label: "Services", href: "/works/services", desc: "Architecture, MLOps, Managed Ops" },
+      { label: "Products", href: "/works/products", desc: "Our product offerings" },
+      { label: "Services", href: "/works/services", desc: "Development, DevOps, Cloud" },
     ],
   },
   {
     label: "Company",
     children: [
       { label: "About Us", href: "/company/about", desc: "Our story and mission" },
-      { label: "Team", href: "/company/members", desc: "The people behind Cirruscale" },
+      { label: "Team", href: "/company/members", desc: "The people behind CirruScale" },
     ],
   },
   {
@@ -33,17 +33,17 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-brand-border">
+    <header className="sticky top-0 z-50 bg-[#080a0f]/95 backdrop-blur-sm border-b border-brand-border">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group">
           <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-               style={{ background: "linear-gradient(135deg, #2563EB, #06B6D4)" }}>
+               style={{ background: "linear-gradient(135deg, #60A5FA, #38BDF8)" }}>
             C
           </div>
           <span className="text-lg font-semibold text-brand-primary tracking-tight">
-            Cirruscale
+            CirruScale
           </span>
         </Link>
 
@@ -58,7 +58,7 @@ export default function Navbar() {
               <li key={item.label}>
                 <Link
                   href={item.href!}
-                  className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-primary rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-primary rounded-lg hover:bg-white/5 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -67,20 +67,10 @@ export default function Navbar() {
           )}
         </ul>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="px-4 py-2 text-sm font-semibold text-white rounded-lg transition-opacity hover:opacity-90"
-            style={{ background: "linear-gradient(135deg, #2563EB, #06B6D4)" }}
-          >
-            Get Started
-          </Link>
-        </div>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -98,7 +88,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-brand-border bg-white px-4 py-4 space-y-1">
+        <div className="md:hidden border-t border-brand-border bg-brand-dark px-4 py-4 space-y-1">
           {NAV_ITEMS.map((item) =>
             item.children ? (
               <div key={item.label} className="py-2">
@@ -131,7 +121,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               className="block w-full text-center py-2.5 text-sm font-semibold text-white rounded-lg"
-              style={{ background: "linear-gradient(135deg, #2563EB, #06B6D4)" }}
+              style={{ background: "linear-gradient(135deg, #60A5FA, #38BDF8)" }}
               onClick={() => setMobileOpen(false)}
             >
               Get Started

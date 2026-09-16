@@ -26,11 +26,11 @@ export default function Button({
   const styles =
     variant === "primary"
       ? "text-white hover:opacity-90"
-      : "border border-brand-border text-brand-primary hover:border-brand-accent hover:text-brand-accent";
+      : "border border-brand-border text-brand-primary hover:border-brand-accent hover:text-brand-accent bg-transparent";
 
   const primaryStyle =
     variant === "primary"
-      ? { background: "linear-gradient(135deg, #2563EB, #06B6D4)" }
+      ? { background: "linear-gradient(135deg, #60A5FA, #38BDF8)" }
       : {};
 
   if (href) {
