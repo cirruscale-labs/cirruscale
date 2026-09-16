@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: cirruscale
+data:
+  APP_ENV: "production"
+  PORT: "8080"
+  CORS_ORIGIN: "https://cirruscale.com"

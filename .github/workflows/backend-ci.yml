@@ -1,0 +1,67 @@
+name: Backend CI
+
+on:
+  push:
+    paths:
+      - "backend/**"
+      - ".github/workflows/backend-ci.yml"
+  pull_request:
+    paths:
+      - "backend/**"
+
+jobs:
+  ci:
+    name: Lint, Test & Build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+          cache-dependency-path: backend/go.sum
+
+      - name: Download modules
+        run: go mod download
+
+      - name: Lint
+        uses: golangci/golangci-lint-action@v4
+        with:
+          working-directory: backend
+          version: latest
+
+      - name: Test
+        run: go test ./... -coverprofile=coverage.out
+
+      - name: Build binary
+        run: go build -o bin/api ./cmd/api
+
+  docker:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest
+    needs: ci
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: |
+            ghcr.io/cirruscale/backend:${{ github.sha }}
+            ghcr.io/cirruscale/backend:${{ github.ref_name }}

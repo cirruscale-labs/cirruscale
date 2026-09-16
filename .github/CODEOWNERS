@@ -1,0 +1,13 @@
+# Global fallback — team lead reviews everything by default
+*                    @cirruscale/team-leads
+
+# Frontend
+/frontend/           @cirruscale/frontend-team
+
+# Backend
+/backend/            @cirruscale/backend-team
+
+# Infrastructure
+/infra/              @cirruscale/devops-team
+/.github/            @cirruscale/devops-team
+/docker-compose.yml  @cirruscale/devops-team

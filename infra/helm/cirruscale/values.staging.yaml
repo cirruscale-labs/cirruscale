@@ -1,0 +1,18 @@
+global:
+  imageTag: develop
+
+frontend:
+  replicas: 1
+  env:
+    NEXT_PUBLIC_API_URL: "https://staging.cirruscale.com/api/v1"
+
+backend:
+  replicas: 1
+  env:
+    APP_ENV: staging
+    CORS_ORIGIN: "https://staging.cirruscale.com"
+
+ingress:
+  enabled: true
+  host: staging.cirruscale.com
+  tls: true

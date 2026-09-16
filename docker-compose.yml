@@ -1,0 +1,68 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cirruscale-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8080
+    depends_on:
+      - backend
+    networks:
+      - cirruscale-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cirruscale-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DATABASE_URL=postgres://cirruscale:password@postgres:5432/cirruscale_db?sslmode=disable
+      - CORS_ORIGIN=http://localhost:3000
+      - APP_ENV=local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - cirruscale-net
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: cirruscale-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=cirruscale
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=cirruscale_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cirruscale -d cirruscale_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - cirruscale-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: cirruscale-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - cirruscale-net
+
+volumes:
+  postgres_data:
+
+networks:
+  cirruscale-net:
+    driver: bridge

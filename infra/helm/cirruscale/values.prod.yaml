@@ -1,0 +1,21 @@
+global:
+  imageTag: main
+
+frontend:
+  replicas: 3
+  env:
+    NEXT_PUBLIC_API_URL: "https://cirruscale.com/api/v1"
+
+backend:
+  replicas: 3
+  env:
+    APP_ENV: production
+    CORS_ORIGIN: "https://cirruscale.com"
+
+postgres:
+  storage: 50Gi
+
+ingress:
+  enabled: true
+  host: cirruscale.com
+  tls: true

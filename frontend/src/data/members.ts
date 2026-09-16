@@ -1,0 +1,50 @@
+import { Member } from "@/types/member";
+
+export const members: Member[] = [
+  {
+    id: "alex-chen",
+    name: "Alex Chen",
+    role: "Co-founder & CEO",
+    bio: "15 years in distributed systems and cloud infrastructure. Previously led infrastructure engineering at a Fortune 500 cloud provider. Alex started Cirruscale after watching AI teams lose weeks to infrastructure setup instead of model development.",
+    initials: "AC",
+    avatarColor: "#2563EB",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    id: "sarah-mitchell",
+    name: "Sarah Mitchell",
+    role: "Co-founder & CTO",
+    bio: "PhD in Computer Science from MIT, specializing in distributed scheduling algorithms. Sarah designed the topology-aware GPU scheduler at the heart of CloudBurst and holds three patents in cluster resource management.",
+    initials: "SM",
+    avatarColor: "#7C3AED",
+    linkedin: "https://linkedin.com",
+    twitter: "https://twitter.com",
+  },
+  {
+    id: "raj-patel",
+    name: "Raj Patel",
+    role: "VP of Engineering",
+    bio: "Built and scaled engineering teams at three YC-backed infrastructure startups. Raj obsesses over developer experience — if something takes more than three steps, he will automate it. Leads our 40-person engineering organization.",
+    initials: "RP",
+    avatarColor: "#059669",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    id: "layla-osei",
+    name: "Layla Osei",
+    role: "Head of Product",
+    bio: "Former Principal PM at Google Cloud where she launched products used by over 200,000 developers. Layla bridges the gap between complex GPU infrastructure and the intuitive interfaces that make our products a joy to use.",
+    initials: "LO",
+    avatarColor: "#D97706",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    id: "marcus-webb",
+    name: "Marcus Webb",
+    role: "Lead Site Reliability Engineer",
+    bio: "Runs Cirruscale's own infrastructure with a 99.99% uptime track record over 36 consecutive months. Marcus built CI/CD systems that have shipped over 50,000 deployments without a production incident. Deeply opinionated about observability.",
+    initials: "MW",
+    avatarColor: "#DC2626",
+    linkedin: "https://linkedin.com",
+  },
+];

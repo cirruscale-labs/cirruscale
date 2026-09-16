@@ -1,0 +1,27 @@
+global:
+  registry: ghcr.io/cirruscale
+  imageTag: latest
+
+frontend:
+  replicas: 2
+  image: frontend
+  port: 3000
+  env:
+    NEXT_PUBLIC_API_URL: "http://backend:8080"
+
+backend:
+  replicas: 2
+  image: backend
+  port: 8080
+  env:
+    APP_ENV: local
+    CORS_ORIGIN: "http://localhost:3000"
+
+postgres:
+  enabled: true
+  storage: 10Gi
+
+ingress:
+  enabled: false
+  host: cirruscale.com
+  tls: false

@@ -1,0 +1,33 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    name: Helm deploy → staging
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Set kubeconfig
+        run: echo "${{ secrets.KUBECONFIG_STAGING }}" | base64 -d > $HOME/.kube/config
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+
+      - name: Deploy
+        run: |
+          helm upgrade --install cirruscale ./infra/helm/cirruscale \
+            -f ./infra/helm/cirruscale/values.staging.yaml \
+            --namespace cirruscale-staging \
+            --create-namespace \
+            --set global.imageTag=${{ github.sha }} \
+            --wait --timeout 5m

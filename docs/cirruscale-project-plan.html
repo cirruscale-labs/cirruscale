@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Engineering Team" />
+  <title>Cirruscale Portfolio — Project Plan</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="-" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Cirruscale Portfolio — Project Plan</h1>
+<p class="author">Engineering Team</p>
+<p class="date">September 2026</p>
+</header>
+<h1 id="cirruscale-portfolio-project-plan">Cirruscale Portfolio —
+Project Plan</h1>
+<h2 id="overview">1. Overview</h2>
+<p>This document describes the architecture, folder structure, tech
+stack decisions, and phased migration roadmap for the Cirruscale company
+portfolio website.</p>
+<p>The site launches as a fully static frontend. All structural
+decisions are made upfront to ensure zero-rewrite migration to a dynamic
+full-stack application with a Go backend, Docker containers, GitHub
+CI/CD, and Kubernetes.</p>
+<hr />
+<h2 id="tech-stack">2. Tech Stack</h2>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 34%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend</td>
+<td>Next.js 14 (TypeScript)</td>
+<td>Static export now; SSR + API routes later, zero rewrite</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Tailwind CSS</td>
+<td>Utility-first, design system friendly</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td>Go (chi router)</td>
+<td>Performant, simple, excellent for REST APIs</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>PostgreSQL 16</td>
+<td>Relational, production-grade, Go/Next.js support</td>
+</tr>
+<tr>
+<td>Cache</td>
+<td>Redis</td>
+<td>Session management, rate limiting (Phase 3+)</td>
+</tr>
+<tr>
+<td>Containers</td>
+<td>Docker (multi-stage builds)</td>
+<td>Consistent local and production environments</td>
+</tr>
+<tr>
+<td>Orchestration</td>
+<td>Kubernetes + Helm</td>
+<td>Auto-scaling, rolling deploys, environment management</td>
+</tr>
+<tr>
+<td>CI/CD</td>
+<td>GitHub Actions</td>
+<td>Monorepo path-based triggers, GHCR image registry</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="repository-strategy-monorepo">3. Repository Strategy —
+Monorepo</h2>
+<p>A single Git repository with independent service folders. Frontend
+and backend are fully decoupled but share the same repo for:</p>
+<ul>
+<li>Atomic commits across services</li>
+<li>Single source of truth for CI/CD</li>
+<li>Shared infrastructure configuration</li>
+</ul>
+<pre><code>cirruscale/
+├── frontend/       # Next.js (TypeScript)
+├── backend/        # Go REST API
+├── infra/          # Kubernetes manifests + Helm charts
+├── .github/        # GitHub Actions pipelines
+├── docker-compose.yml
+├── Makefile
+└── .env.example</code></pre>
+<hr />
+<h2 id="frontend-structure">4. Frontend Structure</h2>
+<pre><code>frontend/
+├── src/
+│   ├── app/                    # Next.js App Router (pages)
+│   │   ├── layout.tsx          # Root layout: Navbar + Footer
+│   │   ├── page.tsx            # Homepage
+│   │   ├── works/products/     # Products page
+│   │   ├── works/services/     # Services page
+│   │   ├── company/about/      # About Us page
+│   │   ├── company/members/    # Team Members page
+│   │   ├── resources/blogs/    # Blog listing + [slug] detail
+│   │   ├── resources/events/   # Events listing + [slug] detail
+│   │   └── contact/            # Contact Us page
+│   ├── components/             # UI components by domain
+│   │   ├── layout/             # Navbar, Footer, DropdownMenu
+│   │   ├── home/               # Hero, FeaturedProducts, CTASection
+│   │   ├── works/              # ProductCard, ServiceCard
+│   │   ├── company/            # MemberCard, AboutHero
+│   │   ├── resources/          # BlogCard, EventCard
+│   │   ├── contact/            # ContactForm
+│   │   └── ui/                 # Button, Card, Badge, SectionHeader
+│   ├── data/                   # Static JSON (Phase 1 — replaced by API in Phase 2)
+│   ├── types/                  # TypeScript interfaces (shared contract with Go models)
+│   ├── lib/                    # Data fetchers (the swap layer)
+│   └── styles/
+├── public/images/              # Static assets
+├── Dockerfile                  # Multi-stage: node build → node runtime
+└── next.config.ts              # output: &#39;export&#39; for Phase 1 static build</code></pre>
+<h3 id="navigation-structure">Navigation Structure</h3>
+<pre><code>Logo (→ Homepage)
+├── Our Works
+│   ├── Products          /works/products
+│   └── Services          /works/services
+├── Company
+│   ├── About Us          /company/about
+│   └── Members           /company/members
+├── Resources
+│   ├── Blogs             /resources/blogs
+│   └── Events            /resources/events
+└── Contact Us            /contact</code></pre>
+<hr />
+<h2 id="backend-structure-go">5. Backend Structure (Go)</h2>
+<pre><code>backend/
+├── cmd/api/main.go             # Entry point, router setup
+├── internal/
+│   ├── handler/                # HTTP handlers (one file per resource)
+│   ├── model/                  # Data structs (mirrors frontend types/)
+│   ├── repository/             # Database queries (interface for easy swapping)
+│   ├── service/                # Business logic layer
+│   ├── middleware/             # CORS, logger, JWT auth
+│   └── config/                 # Environment config loader
+├── pkg/
+│   ├── response/               # Standard JSON response helpers
+│   └── validator/              # Input validation
+├── migrations/                 # SQL migration files (numbered)
+├── Dockerfile                  # Multi-stage: go build → distroless runtime
+└── go.mod</code></pre>
+<h3 id="api-routes-v1">API Routes (v1)</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/health</td>
+<td>Health check</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/products</td>
+<td>List all products</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/products/:id</td>
+<td>Single product</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/services</td>
+<td>List all services</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/members</td>
+<td>List team members</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/blogs</td>
+<td>List all blogs</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/blogs/:slug</td>
+<td>Single blog post</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/events</td>
+<td>List all events</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/events/:slug</td>
+<td>Single event</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/v1/contact</td>
+<td>Submit contact form</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="migration-path-static-to-dynamic">6. Migration Path — Static to
+Dynamic</h2>
+<p>The <code>lib/</code> layer is the key abstraction. Swapping one file
+migrates a resource to the API with zero component changes.</p>
+<p><strong>Phase 1 (Static):</strong></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// lib/getBlogs.ts</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { blogs } <span class="im">from</span> <span class="st">&quot;@/data/blogs&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> getBlogs <span class="op">=</span> () <span class="kw">=&gt;</span> blogs</span></code></pre></div>
+<p><strong>Phase 2 (Dynamic):</strong></p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// lib/getBlogs.ts  — only this file changes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">const</span> getBlogs <span class="op">=</span> <span class="kw">async</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> res <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="vs">`</span><span class="sc">${</span><span class="bu">process</span><span class="op">.</span><span class="at">env</span><span class="op">.</span><span class="at">NEXT_PUBLIC_API_URL</span><span class="sc">}</span><span class="vs">/api/v1/blogs`</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> res<span class="op">.</span><span class="fu">json</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Frontend components remain completely unchanged.</p>
+<hr />
+<h2 id="docker-setup">7. Docker Setup</h2>
+<h3 id="multi-stage-builds">Multi-Stage Builds</h3>
+<p><strong>Frontend Dockerfile:</strong> - Stage 1 (builder):
+<code>node:20-alpine</code> — runs <code>npm run build</code> - Stage 2
+(runner): <code>node:20-alpine</code> — serves <code>.next/</code>
+output</p>
+<p><strong>Backend Dockerfile:</strong> - Stage 1 (builder):
+<code>golang:1.23-alpine</code> — compiles single static binary - Stage
+2 (runner): <code>gcr.io/distroless/static</code> — minimal image, no
+shell, no OS attack surface</p>
+<h3 id="local-development">Local Development</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dev          <span class="co"># docker compose up --build (all services)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dev-frontend <span class="co"># Next.js hot reload only</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> dev-backend  <span class="co"># Go with air hot reload only</span></span></code></pre></div>
+<p>Services and ports:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frontend</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>backend</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>postgres</td>
+<td>5432</td>
+</tr>
+<tr>
+<td>redis</td>
+<td>6379</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="github-actions-cicd">8. GitHub Actions CI/CD</h2>
+<h3 id="pipelines">Pipelines</h3>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 35%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>Trigger</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frontend-ci.yml</td>
+<td>push/PR touching frontend/</td>
+<td>Lint, type-check, build, push</td>
+</tr>
+<tr>
+<td>backend-ci.yml</td>
+<td>push/PR touching backend/</td>
+<td>Lint, test, build, push</td>
+</tr>
+<tr>
+<td>deploy-staging.yml</td>
+<td>push to develop branch</td>
+<td>Auto-deploy to staging via Helm</td>
+</tr>
+<tr>
+<td>deploy-production.yml</td>
+<td>push to main branch</td>
+<td>Manual-approval deploy to prod</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pipeline-flow">Pipeline Flow</h3>
+<pre><code>Push code
+  → Lint + Type Check
+  → Run Tests
+  → Build Docker Image
+  → Push to GHCR (ghcr.io/cirruscale/*)
+  → Deploy to Staging (auto on develop)
+  → Manual Approval Gate
+  → Deploy to Production</code></pre>
+<h3 id="required-github-secrets">Required GitHub Secrets</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 25%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr>
+<th>Secret</th>
+<th>Used In</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KUBECONFIG_STAGING</td>
+<td>deploy-staging</td>
+<td>Base64-encoded kubeconfig</td>
+</tr>
+<tr>
+<td>KUBECONFIG_PROD</td>
+<td>deploy-production</td>
+<td>Base64-encoded kubeconfig</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="kubernetes-infrastructure">9. Kubernetes Infrastructure</h2>
+<pre><code>infra/
+├── k8s/
+│   ├── namespace.yml                     # cirruscale namespace
+│   ├── frontend/
+│   │   ├── deployment.yml                # 2 replicas, rolling update
+│   │   ├── service.yml                   # ClusterIP → port 80
+│   │   └── hpa.yml                       # Scale 2–10 pods at 70% CPU
+│   ├── backend/
+│   │   ├── deployment.yml                # 2 replicas, health probe on /health
+│   │   ├── service.yml                   # ClusterIP → port 8080
+│   │   └── hpa.yml                       # Scale 2–20 pods at 70% CPU
+│   ├── postgres/
+│   │   ├── statefulset.yml               # Single replica StatefulSet
+│   │   └── service.yml                   # Headless service
+│   ├── ingress/
+│   │   └── ingress.yml                   # / → frontend, /api → backend, TLS via cert-manager
+│   └── configmaps/
+│       ├── frontend-config.yml
+│       └── backend-config.yml
+└── helm/cirruscale/
+    ├── Chart.yaml
+    ├── values.yaml           # Local defaults
+    ├── values.staging.yaml   # Staging overrides
+    └── values.prod.yaml      # Production overrides</code></pre>
+<h3 id="ingress-routing">Ingress Routing</h3>
+<pre><code>cirruscale.com/api/*  →  backend service  (port 8080)
+cirruscale.com/*      →  frontend service (port 80)</code></pre>
+<hr />
+<h2 id="environment-strategy">10. Environment Strategy</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 34%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Runtime</th>
+<th>Config source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>local</td>
+<td>docker-compose</td>
+<td>.env.local</td>
+</tr>
+<tr>
+<td>staging</td>
+<td>Kubernetes</td>
+<td>GitHub Secrets + values.staging.yaml</td>
+</tr>
+<tr>
+<td>production</td>
+<td>Kubernetes</td>
+<td>GitHub Secrets + values.prod.yaml</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="branch-strategy">11. Branch Strategy</h2>
+<pre><code>main          → production deployments (protected, requires PR + approval)
+develop       → staging auto-deploy on every merge
+feature/*     → developer branches, PR into develop
+hotfix/*      → urgent fix, PR into main + backmerge to develop</code></pre>
+<hr />
+<h2 id="phased-roadmap">12. Phased Roadmap</h2>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 49%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Description</th>
+<th>Deployment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Static Next.js, JSON data, no backend</td>
+<td>Vercel or Netlify (free)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add Go backend + docker-compose</td>
+<td>Single VPS or Railway</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add GitHub Actions CI/CD + GHCR</td>
+<td>Automated build + push</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kubernetes + Helm</td>
+<td>Managed K8s (GKE / EKS / DOKS)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Redis, CDN, Prometheus + Grafana</td>
+<td>Full production scale</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="content-handoff-checklist">13. Content Handoff Checklist</h2>
+<p>The following content is needed to replace all placeholders in the
+site:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Company logo (SVG
+preferred)</label></li>
+<li><label><input type="checkbox" />Brand colors (primary, accent,
+background)</label></li>
+<li><label><input type="checkbox" />Hero headline, subheadline,
+tagline</label></li>
+<li><label><input type="checkbox" />Products: name, description,
+features, image, link (per product)</label></li>
+<li><label><input type="checkbox" />Services: name, description,
+deliverables, image (per service)</label></li>
+<li><label><input type="checkbox" />About Us: company story, mission,
+vision, founding year</label></li>
+<li><label><input type="checkbox" />Team members: name, role, bio,
+photo, LinkedIn (per member)</label></li>
+<li><label><input type="checkbox" />Blogs: title, excerpt, body, cover
+image, author, date, tags (per post)</label></li>
+<li><label><input type="checkbox" />Events: title, description, date,
+location, cover image, registration link (per event)</label></li>
+<li><label><input type="checkbox" />Contact details: email, phone,
+address, social media links</label></li>
+</ul>
+<hr />
+<p><em>Document generated: September 2026</em></p>
+</body>
+</html>

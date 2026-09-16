@@ -1,0 +1,38 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Helm deploy → production
+    runs-on: ubuntu-latest
+    environment: production  # Requires manual approval gate in GitHub repo settings
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Set kubeconfig
+        run: echo "${{ secrets.KUBECONFIG_PROD }}" | base64 -d > $HOME/.kube/config
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+
+      - name: Deploy
+        run: |
+          helm upgrade --install cirruscale ./infra/helm/cirruscale \
+            -f ./infra/helm/cirruscale/values.prod.yaml \
+            --namespace cirruscale-prod \
+            --create-namespace \
+            --set global.imageTag=${{ github.sha }} \
+            --wait --timeout 10m
+
+      - name: Verify rollout
+        run: |
+          kubectl rollout status deployment/frontend -n cirruscale-prod
+          kubectl rollout status deployment/backend  -n cirruscale-prod
