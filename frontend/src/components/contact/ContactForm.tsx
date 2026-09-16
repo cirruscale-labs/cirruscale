@@ -10,9 +10,18 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // Phase 1: simulate submission delay
-    // Phase 2: POST to /api/v1/contact
-    await new Promise((r) => setTimeout(r, 800));
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const phone = formData.get("phone") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    const body = `Name: ${name}\nPhone: ${phone || "N/A"}\nEmail: ${email}\n\n${message}`;
+    const mailtoLink = `mailto:cirruscaleltd@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
     setLoading(false);
     setSubmitted(true);
   }
@@ -50,22 +59,22 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="company">
-            Company
+          <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="phone">
+            Phone
           </label>
           <input
-            id="company"
-            name="company"
-            type="text"
+            id="phone"
+            name="phone"
+            type="tel"
             className="w-full border border-brand-border rounded-xl px-4 py-3 text-sm bg-brand-light text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow placeholder:text-brand-muted"
-            placeholder="Acme Corp"
+            placeholder="+1 (555) 000-0000"
           />
         </div>
       </div>
 
       <div>
         <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="email">
-          Work Email
+          Email <span className="text-red-400">*</span>
         </label>
         <input
           id="email"
@@ -73,27 +82,22 @@ export default function ContactForm() {
           type="email"
           required
           className="w-full border border-brand-border rounded-xl px-4 py-3 text-sm bg-brand-light text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow placeholder:text-brand-muted"
-          placeholder="you@company.com"
+          placeholder="you@example.com"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="interest">
-          I am interested in
+        <label className="block text-sm font-medium text-brand-primary mb-1.5" htmlFor="subject">
+          Subject <span className="text-red-400">*</span>
         </label>
-        <select
-          id="interest"
-          name="interest"
-          className="w-full border border-brand-border rounded-xl px-4 py-3 text-sm bg-brand-light text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow placeholder:text-brand-muted bg-brand-light"
-        >
-          <option value="">Select a topic</option>
-          <option value="cloudburst">CloudBurst — GPU Clusters</option>
-          <option value="datanexus">DataNexus — Distributed Storage</option>
-          <option value="infergrid">InferGrid — AI Inference</option>
-          <option value="services">Professional Services</option>
-          <option value="pricing">Pricing &amp; Enterprise Plans</option>
-          <option value="other">Something else</option>
-        </select>
+        <input
+          id="subject"
+          name="subject"
+          type="text"
+          required
+          className="w-full border border-brand-border rounded-xl px-4 py-3 text-sm bg-brand-light text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-shadow placeholder:text-brand-muted"
+          placeholder="What is this about?"
+        />
       </div>
 
       <div>

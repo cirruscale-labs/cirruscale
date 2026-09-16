@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Card from "@/components/ui/Card";
 import { Member } from "@/types/member";
 
@@ -7,12 +8,24 @@ export default function MemberCard({ member }: { member: Member }) {
     <Link href={`/company/members/${member.id}`} className="block group">
       <Card className="p-6 hover:shadow-card-hover hover:border-brand-accent/40 transition-all duration-300">
         <div className="flex items-center gap-4 mb-4">
-          <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-lg font-bold flex-shrink-0"
-            style={{ backgroundColor: member.avatarColor }}
-          >
-            {member.initials}
-          </div>
+          {member.image ? (
+            <div className="w-14 h-14 rounded-2xl overflow-hidden flex-shrink-0">
+              <Image
+                src={member.image}
+                alt={member.name}
+                width={56}
+                height={56}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center text-white text-lg font-bold flex-shrink-0"
+              style={{ backgroundColor: member.avatarColor }}
+            >
+              {member.initials}
+            </div>
+          )}
           <div>
             <h3 className="text-base font-bold text-brand-primary group-hover:text-brand-accent transition-colors">
               {member.name}

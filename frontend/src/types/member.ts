@@ -5,6 +5,7 @@ export interface Member {
   bio: string;
   initials: string;
   avatarColor: string;
+  image?: string;
   linkedin?: string;
   twitter?: string;
   github?: string;

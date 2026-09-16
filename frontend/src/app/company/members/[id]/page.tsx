@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMembers } from "@/lib/getMembers";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   params: { id: string };
@@ -40,12 +41,24 @@ export default function MemberDetailPage({ params }: Props) {
           </Link>
 
           <div className="flex items-center gap-6 mb-8">
-            <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
-              style={{ backgroundColor: member.avatarColor }}
-            >
-              {member.initials}
-            </div>
+            {member.image ? (
+              <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div
+                className="w-20 h-20 rounded-2xl flex items-center justify-center text-white text-2xl font-bold flex-shrink-0"
+                style={{ backgroundColor: member.avatarColor }}
+              >
+                {member.initials}
+              </div>
+            )}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-white">{member.name}</h1>
               <p className="text-brand-accent text-lg font-medium mt-1">{member.role}</p>
