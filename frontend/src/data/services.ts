@@ -86,4 +86,38 @@ export const services: Service[] = [
     gradient: "linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)",
     icon: "🛡",
   },
+  {
+    id: "cloud-support",
+    name: "Cloud Support",
+    tagline: "Expert Guidance for Every Cloud Decision",
+    description:
+      "From architecture reviews to cloud migration and cost audits, we provide hands-on cloud support whenever you need it. Whether you are moving to the cloud for the first time or optimizing an existing setup, our engineers are in your corner.",
+    deliverables: [
+      "Cloud architecture design and review",
+      "Cloud migration planning and execution",
+      "Multi-cloud strategy (AWS, GCP, Azure)",
+      "Cloud cost audits and optimization",
+      "Security posture review and hardening",
+      "On-demand engineering support hours",
+    ],
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)",
+    icon: "☁️",
+  },
+  {
+    id: "qa-testing",
+    name: "QA & Testing",
+    tagline: "Ship with Confidence, Every Time",
+    description:
+      "We design and implement comprehensive testing strategies — unit, integration, end-to-end, and load testing — so bugs are caught before they reach production. From test plan to automated regression suites, we make quality a built-in part of your pipeline.",
+    deliverables: [
+      "Test strategy design and planning",
+      "Unit and integration test implementation",
+      "End-to-end testing (Playwright, Cypress)",
+      "Load and performance testing",
+      "Automated regression suite setup",
+      "QA integration into CI/CD pipelines",
+    ],
+    gradient: "linear-gradient(135deg, #059669 0%, #047857 100%)",
+    icon: "✅",
+  },
 ];

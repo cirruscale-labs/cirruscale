@@ -3,7 +3,7 @@ import AboutHero from "@/components/company/AboutHero";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "CirruScale was founded in 2022 to help engineering teams build software and deploy it to the cloud without the DevOps headaches.",
+  description: "CirruScale was founded on September 17, 2026 in Dhaka, Bangladesh — delivering cloud infrastructure and full-stack software solutions.",
 };
 
 export default function AboutPage() {

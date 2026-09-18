@@ -3,17 +3,17 @@ import { Product } from "@/types/product";
 export const products: Product[] = [
   {
     id: "backend-development",
-    name: "Backend Development",
-    tagline: "Production-Grade APIs & Microservices",
+    name: "Full Stack Development",
+    tagline: "End-to-End Web & Application Development",
     description:
-      "We build fast, reliable backend systems in Go and Python. REST APIs, gRPC services, event-driven microservices, background workers, and CLI tools — all written with clean architecture, comprehensive tests, and production-ready from day one.",
+      "We build complete, production-ready applications from frontend to backend. Modern UIs, fast APIs, event-driven microservices, and everything in between — written with clean architecture, comprehensive tests, and ready to scale from day one.",
     features: [
+      "Frontend development (React, Next.js)",
       "Go and Python backend development",
       "REST API and gRPC service design",
       "Event-driven microservice architecture",
       "Database design (PostgreSQL, Redis, MongoDB)",
       "Comprehensive test coverage and CI integration",
-      "Performance profiling and optimization",
     ],
     gradient: "linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)",
     icon: "⚙️",

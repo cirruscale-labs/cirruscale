@@ -27,11 +27,11 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center mb-4">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo-text.jpeg"
                 alt="CirruScale Logo"
-                width={120}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={160}
+                height={23}
+                className="h-6 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">

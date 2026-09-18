@@ -1,27 +1,24 @@
 const PILLARS = [
   {
     label: "Mission",
-    text: "Help engineering teams build great software and deploy it to the cloud — without the DevOps headaches. From two-person startups to Fortune 500s.",
+    text: "Help engineering teams worldwide build great software and scale confidently — with modern cloud infrastructure and full-stack engineering under one roof.",
     color: "#60A5FA",
   },
   {
     label: "Vision",
-    text: "A world where going from code push to production deployment is measured in minutes, not months.",
+    text: "A world where every ambitious team, regardless of location, can ship world-class software without being held back by infrastructure complexity.",
     color: "#38BDF8",
   },
   {
     label: "Founded",
-    text: "2022, San Francisco. Built by engineers who were tired of watching teams struggle with Docker, CI/CD, and cloud deployments instead of building features.",
+    text: "September 17, 2026 — Dhaka, Bangladesh. A global cloud and software solutions company built to serve clients across the world.",
     color: "#3B82F6",
   },
 ];
 
 const MILESTONES = [
-  { year: "2022", event: "Founded in San Francisco. First client backend built and deployed to AWS." },
-  { year: "2023", event: "Expanded to full DevOps services. Crossed 20 clients. Series A — $18M." },
-  { year: "2024", event: "Opened EU operations. Multi-cloud support (AWS, GCP, Azure). 100+ projects delivered." },
-  { year: "2025", event: "Series B — $62M. APAC expansion. 40+ enterprise clients across three continents." },
-  { year: "2026", event: "Launched managed Kubernetes operations. CloudDeploy Conf as annual flagship event." },
+  { year: "Sep 2026", event: "CirruScale founded in Dhaka, Bangladesh on September 17, 2026. Incorporated as a cloud and software solutions company." },
+  { year: "Sep 2026", event: "Launched core service offerings: full-stack development, DevOps, CI/CD pipelines, and cloud deployment on AWS, GCP & Azure — serving clients globally." },
 ];
 
 export default function AboutHero() {
@@ -35,19 +32,17 @@ export default function AboutHero() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Our Story</p>
           <h1 className="text-5xl font-bold text-white leading-tight">
-            We Build What We Wish Existed
+            Built for the Future
           </h1>
           <p className="mt-6 text-slate-400 text-lg leading-relaxed">
-            CirruScale was founded by Tahshin and Saad — two backend engineers who spent years
-            watching teams lose months to DevOps complexity instead of shipping features.
-            The cloud providers existed, the tooling existed — but stitching it all together was
-            still a full-time job.
+            CirruScale was founded on September 17, 2026 in Dhaka, Bangladesh — by engineers
+            who saw that great teams everywhere were losing months to DevOps complexity instead
+            of shipping features. We set out to fix that, from day one, for clients around the world.
           </p>
           <p className="mt-4 text-slate-400 text-lg leading-relaxed">
-            We built CirruScale to change that. Today we build full-stack software, then
-            handle Docker, CI/CD, Kubernetes, and cloud deployment — and we
-            are still solving the same core problem: letting engineering teams focus on code,
-            not infrastructure.
+            Today we deliver full-stack software development alongside Docker, CI/CD, Kubernetes,
+            and multi-cloud deployment on AWS, GCP, and Azure — serving startups and enterprises
+            globally so their teams can focus on building, not babysitting servers.
           </p>
         </div>
       </section>

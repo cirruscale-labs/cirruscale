@@ -40,11 +40,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <Image
-            src="/images/logo.jpeg"
+            src="/images/logo-full.jpeg"
             alt="CirruScale Logo"
-            width={40}
-            height={13}
-            className="h-3 w-auto object-contain"
+            width={160}
+            height={90}
+            className="h-16 w-auto object-contain"
             priority
           />
         </Link>
