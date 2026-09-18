@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const LINKS = {
   "Our Works": [
@@ -24,14 +25,14 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold"
-                style={{ background: "linear-gradient(135deg, #60A5FA, #38BDF8)" }}
-              >
-                C
-              </div>
-              <span className="text-lg font-semibold">CirruScale</span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/images/logo.jpeg"
+                alt="CirruScale Logo"
+                width={160}
+                height={54}
+                className="h-14 w-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               Cloud deployment, CI/CD, Kubernetes, and infrastructure management on
