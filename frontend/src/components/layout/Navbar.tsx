@@ -42,9 +42,9 @@ export default function Navbar() {
           <Image
             src="/images/logo.jpeg"
             alt="CirruScale Logo"
-            width={120}
-            height={40}
-            className="h-10 w-auto object-contain"
+            width={90}
+            height={30}
+            className="h-8 w-auto object-contain"
             priority
           />
         </Link>

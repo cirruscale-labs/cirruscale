@@ -29,9 +29,9 @@ export default function Footer() {
               <Image
                 src="/images/logo.jpeg"
                 alt="CirruScale Logo"
-                width={160}
-                height={54}
-                className="h-14 w-auto object-contain"
+                width={120}
+                height={40}
+                className="h-10 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
