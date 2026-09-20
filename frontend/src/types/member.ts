@@ -2,6 +2,8 @@ export interface Member {
   id: string;
   name: string;
   role: string;
+  teamRole?: string;
+  team?: "backend" | "devops" | "qa";
   bio: string;
   initials: string;
   avatarColor: string;

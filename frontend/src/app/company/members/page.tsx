@@ -11,6 +11,11 @@ export const metadata: Metadata = {
 export default function MembersPage() {
   const members = getMembers();
 
+  const foundingMembers = members.filter((m) => m.isFounder);
+  const backendTeam = members.filter((m) => m.team === "backend");
+  const devopsTeam = members.filter((m) => m.team === "devops");
+  const qaTeam = members.filter((m) => m.team === "qa");
+
   return (
     <>
       {/* Header */}
@@ -24,18 +29,66 @@ export default function MembersPage() {
             Built by Engineers, for Engineers
           </h1>
           <p className="mt-5 text-slate-400 text-lg">
-            Two engineers who have built backend systems, cloud infrastructure, and DevOps pipelines
-            at scale. Click on a profile to see the full technical background.
+            A team of engineers building backend systems, cloud infrastructure, and DevOps pipelines at scale.
           </p>
         </div>
       </section>
 
-      {/* Team grid */}
-      <section className="py-20">
+      {/* Meet Founding Members */}
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {members.map((member) => (
-              <MemberCard key={member.id} member={member} />
+          <div className="mb-10">
+            <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-2">Leadership</p>
+            <h2 className="text-2xl font-bold text-white">Meet Founding Members</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            {foundingMembers.map((member) => (
+              <MemberCard key={member.id} member={member} displayRole="Co-founder" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Backend Team */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-2">Engineering</p>
+            <h2 className="text-2xl font-bold text-white">Backend Team</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            {backendTeam.map((member) => (
+              <MemberCard key={member.id} member={member} displayRole={member.teamRole} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DevOps Team */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-2">Infrastructure</p>
+            <h2 className="text-2xl font-bold text-white">DevOps Team</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            {devopsTeam.map((member) => (
+              <MemberCard key={member.id} member={member} displayRole={member.teamRole} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* QA Team */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10">
+            <p className="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-2">Quality</p>
+            <h2 className="text-2xl font-bold text-white">QA Team</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+            {qaTeam.map((member) => (
+              <MemberCard key={member.id} member={member} displayRole={member.teamRole} />
             ))}
           </div>
         </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Card from "@/components/ui/Card";
 import { Member } from "@/types/member";
 
-export default function MemberCard({ member }: { member: Member }) {
+export default function MemberCard({ member, displayRole }: { member: Member; displayRole?: string }) {
   return (
     <Link href={`/company/members/${member.id}`} className="block group">
       <Card className="p-6 hover:shadow-card-hover hover:border-brand-accent/40 transition-all duration-300">
@@ -30,7 +30,7 @@ export default function MemberCard({ member }: { member: Member }) {
             <h3 className="text-base font-bold text-brand-primary group-hover:text-brand-accent transition-colors">
               {member.name}
             </h3>
-            <p className="text-sm text-brand-accent font-medium">{member.role}</p>
+            <p className="text-sm text-brand-accent font-medium">{displayRole ?? member.role}</p>
           </div>
         </div>
 
