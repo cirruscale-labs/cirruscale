@@ -138,14 +138,59 @@ export const members: Member[] = [
     role: "DevOps Team Lead",
     team: "devops",
     teamRole: "DevOps Team Lead",
-    bio: "DevOps engineer specializing in cloud infrastructure, CI/CD pipelines, and container orchestration. Experienced with AWS, Kubernetes, Terraform, and building reliable, scalable deployment workflows.",
+    bio: "DevOps engineer with hands-on expertise in cloud infrastructure, container orchestration, and end-to-end CI/CD automation. Proven track record of designing resilient AWS environments, managing Kubernetes clusters at scale, and driving infrastructure-as-code adoption with Terraform and Ansible. Passionate about building self-healing, observable systems that let development teams ship faster with confidence.",
     initials: "SA",
     avatarColor: "#10B981",
     linkedin: "https://linkedin.com",
     github: "https://github.com",
     skills: [
-      "AWS", "Kubernetes", "Docker", "Terraform", "Ansible",
-      "CI/CD", "GitHub Actions", "Grafana", "Prometheus",
+      "AWS (EC2, EKS, ECS, S3, RDS, IAM, CloudWatch, VPC, Route 53, ALB)",
+      "Kubernetes", "Helm", "Docker", "Docker Compose",
+      "Terraform", "Ansible",
+      "CI/CD", "GitHub Actions", "GitLab CI", "ArgoCD",
+      "Grafana", "Prometheus", "Loki", "Alertmanager",
+      "Linux", "Bash", "Python",
+      "NGINX", "Traefik", "Vault (HashiCorp)",
+    ],
+    experience: [
+      {
+        company: "Shikho Technologies",
+        role: "DevOps Engineer",
+        highlights: [
+          "Provisioned and maintained multi-environment AWS infrastructure (dev, staging, production) using Terraform, reducing manual configuration drift to zero",
+          "Deployed and managed production-grade EKS clusters with autoscaling node groups, handling traffic spikes of 5× baseline load without manual intervention",
+          "Built centralized observability stack (Prometheus, Grafana, Loki, Alertmanager) providing real-time dashboards and on-call alerts across 20+ microservices",
+          "Migrated CI/CD pipelines to GitHub Actions with automated Docker image builds, vulnerability scanning, and zero-downtime rolling deployments to Kubernetes",
+          "Reduced average deployment time from 35 minutes to under 8 minutes by parallelizing pipeline stages and introducing layer-cached container builds",
+        ],
+      },
+      {
+        company: "Cloudscockpit",
+        role: "DevOps / Cloud Infrastructure Engineer",
+        highlights: [
+          "Designed and implemented GitOps workflow using ArgoCD for declarative, audit-trailed Kubernetes deployments across three cloud regions",
+          "Hardened AWS account security with least-privilege IAM policies, VPC segmentation, and automated CIS Benchmark compliance checks via AWS Config",
+          "Automated infrastructure lifecycle with Ansible playbooks for OS patching, secrets rotation, and node warm-up — eliminating 10+ hours of weekly manual ops",
+          "Set up Vault-based dynamic secrets management for database credentials and API keys, reducing secret sprawl across application configs",
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: "Multi-Region EKS Platform",
+        description: "Fully automated multi-region Kubernetes platform on AWS EKS with Terraform-managed node groups, Helm chart deployments, and global load balancing via Route 53 latency routing.",
+        tech: ["AWS EKS", "Terraform", "Helm", "Route 53", "ALB Ingress", "Cluster Autoscaler"],
+      },
+      {
+        name: "GitOps CI/CD Pipeline",
+        description: "End-to-end GitOps pipeline combining GitHub Actions for build/test/push with ArgoCD for declarative sync to Kubernetes. Supports canary and blue-green release strategies.",
+        tech: ["GitHub Actions", "ArgoCD", "Docker", "Kubernetes", "Helm", "Trivy"],
+      },
+      {
+        name: "Unified Observability Stack",
+        description: "Centralized monitoring and log-aggregation platform deployed on Kubernetes. Captures metrics, logs, and traces across all services with pre-built Grafana dashboards and PagerDuty alerting.",
+        tech: ["Prometheus", "Grafana", "Loki", "Alertmanager", "OpenTelemetry", "Kubernetes"],
+      },
     ],
   },
   {
