@@ -94,10 +94,10 @@ export const members: Member[] = [
     skills: [
       "Golang", "Python", "C/C++",
       "PostgreSQL", "MongoDB", "MySQL", "ArangoDB", "Elasticsearch",
-      "Docker", "Kubernetes", "Terraform", "Ansible",
-      "AWS (EC2, S3, Lambda, EKS, DynamoDB, IAM, CloudWatch, ECR, VPC)",
+      "Git", "Docker", "Docker Compose", "Kubernetes", "Terraform", "Ansible",
+      "AWS (EC2, S3, Amplify, Lambda, EKS, DynamoDB, IAM, CloudWatch, ECR, VPC)",
       "RabbitMQ", "Redis", "NATS",
-      "CI/CD", "GitHub Actions", "Grafana",
+      "CI/CD", "GitHub Actions", "Grafana", "Linux", "Bash Scripting",
       "Clean Architecture", "REST", "gRPC", "GraphQL", "DevOps",
     ],
     experience: [
@@ -111,6 +111,7 @@ export const members: Member[] = [
           "Built API-key platform for external partners with client-specific, scope-restricted access",
           "Integrated Gemini API for bulk content ingestion, cutting manual data-entry by ~70%",
           "Ran production migrations: auth system (6M records), video URL provider (2M docs), zero data loss with rollback checkpoints",
+          "Built cron jobs for daily result publishing, finished-chapter updates, and user activity mismatch reconciliation",
         ],
       },
     ],
