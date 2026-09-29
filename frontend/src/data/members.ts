@@ -156,7 +156,7 @@ export const members: Member[] = [
     initials: "SA",
     avatarColor: "#10B981",
     image: "/images/shifat.png",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/tahshin-sharon-a1b48a17a/",
     github: "https://github.com",
     skills: [
       "AWS (EC2, EKS, ECS, S3, RDS, IAM, CloudWatch, VPC, Route 53, ALB, WAF, CodePipeline)",
