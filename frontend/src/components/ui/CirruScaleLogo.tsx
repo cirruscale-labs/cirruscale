@@ -28,37 +28,22 @@ export default function CirruScaleLogo({
             <stop offset="0%" stopColor="#60A5FA" />
             <stop offset="100%" stopColor="#38BDF8" />
           </linearGradient>
-          <linearGradient id="cs-grad-b" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.2" />
-          </linearGradient>
         </defs>
 
-        {/* Cloud arcs — three stacked wisps (cirrus) */}
+        {/* Cloud body — bumpy top, flat bottom */}
+        <circle cx="15" cy="23" r="7" fill="url(#cs-grad-a)" />
+        <circle cx="23" cy="20" r="9" fill="url(#cs-grad-a)" />
+        <circle cx="31" cy="24" r="6" fill="url(#cs-grad-a)" />
+        <rect x="8" y="24" width="29" height="9" fill="url(#cs-grad-a)" />
+
+        {/* Upward arrow — "scale up" */}
         <path
-          d="M8 26 Q10 18 20 18 Q30 18 32 26"
-          stroke="url(#cs-grad-a)"
+          d="M20 31 L20 19 M15.5 23.5 L20 19 L24.5 23.5"
+          stroke="white"
           strokeWidth="2.5"
           strokeLinecap="round"
-          fill="none"
+          strokeLinejoin="round"
         />
-        <path
-          d="M5 31 Q8 21 20 21 Q32 21 35 31"
-          stroke="url(#cs-grad-a)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          fill="none"
-        />
-
-        {/* Top node cluster — 3 dots suggesting scale/network */}
-        <circle cx="20" cy="10" r="3.5" fill="url(#cs-grad-a)" />
-        <circle cx="10" cy="16" r="2.5" fill="url(#cs-grad-a)" opacity="0.8" />
-        <circle cx="30" cy="16" r="2.5" fill="url(#cs-grad-a)" opacity="0.8" />
-
-        {/* Connector lines */}
-        <line x1="20" y1="13.5" x2="10" y2="16" stroke="url(#cs-grad-b)" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="20" y1="13.5" x2="30" y2="16" stroke="url(#cs-grad-b)" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="10" y1="16" x2="30" y2="16" stroke="url(#cs-grad-b)" strokeWidth="1" strokeLinecap="round" strokeDasharray="2 2" />
       </svg>
 
       {/* Wordmark */}
@@ -77,7 +62,7 @@ export default function CirruScaleLogo({
               <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
           </defs>
-          {/* "Cirru" in white */}
+          {/* "Cirru" white + "Scale" gradient — no space between */}
           <text
             x="0"
             y="17"
@@ -85,21 +70,8 @@ export default function CirruScaleLogo({
             fontSize="18"
             fontWeight="700"
             letterSpacing="-0.5"
-            fill="white"
           >
-            Cirru
-          </text>
-          {/* "Scale" in gradient blue */}
-          <text
-            x="55"
-            y="17"
-            fontFamily="ui-sans-serif, system-ui, -apple-system, sans-serif"
-            fontSize="18"
-            fontWeight="700"
-            letterSpacing="-0.5"
-            fill="url(#cs-text-grad)"
-          >
-            Scale
+            <tspan fill="white">Cirru</tspan><tspan fill="url(#cs-text-grad)">Scale</tspan>
           </text>
         </svg>
       )}
