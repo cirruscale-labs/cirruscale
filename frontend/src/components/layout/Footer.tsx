@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import CirruScaleLogo from "@/components/ui/CirruScaleLogo";
 
 const LINKS = {
   "Our Works": [
@@ -26,13 +26,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center mb-4">
-              <Image
-                src="/images/logo-text.jpeg"
-                alt="CirruScale Logo"
-                width={160}
-                height={23}
-                className="h-6 w-auto object-contain"
-              />
+              <CirruScaleLogo variant="full" height={30} />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               Cloud deployment, CI/CD, Kubernetes, and infrastructure management on
