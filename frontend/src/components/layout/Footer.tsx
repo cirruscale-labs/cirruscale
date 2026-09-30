@@ -25,8 +25,8 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center mb-4">
-              <CirruScaleLogo variant="full" height={30} />
+            <Link href="/" className="flex items-center mb-6">
+              <CirruScaleLogo variant="stacked" height={48} />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
               Cloud deployment, CI/CD, Kubernetes, and infrastructure management on

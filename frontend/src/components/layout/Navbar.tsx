@@ -35,11 +35,11 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#080a0f]/95 backdrop-blur-sm border-b border-brand-border">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <CirruScaleLogo variant="full" height={36} />
+          <CirruScaleLogo variant="stacked" height={32} />
         </Link>
 
         {/* Desktop nav */}
