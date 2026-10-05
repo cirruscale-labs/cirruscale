@@ -2,6 +2,68 @@ import { Member } from "@/types/member";
 
 export const members: Member[] = [
   {
+    id: "saiful",
+    name: "Md Saiful Islam",
+    role: "Backend Lead",
+    team: "backend",
+    teamRole: "Backend Team Lead",
+    bio: "Software Engineer with deep expertise in Go microservices, distributed systems, and cloud-native architecture. Built scalable analytics generating 10K+ reports daily, engineered high-concurrency services for 3M+ users, and led event-driven integrations contributing to 30% subscriber growth. Currently pursuing M.Sc. in Data Science at TU Dortmund.",
+    initials: "SI",
+    avatarColor: "#8B5CF6",
+    image: "/images/saiful.jpeg",
+    skills: [
+      "Golang", "Python", "C++", "Java", "JavaScript",
+      "GIN", "gRPC", "REST APIs", "GraphQL", "Microservices", "ORM (BUN)", "ReactJS",
+      "PostgreSQL", "MongoDB", "Redis", "ArangoDB", "VectorDB",
+      "NATS", "RabbitMQ",
+      "Docker", "Kubernetes", "AWS (S3, DocumentDB)", "GitLab CI/CD",
+      "Datadog", "Grafana", "OpenTelemetry",
+      "Testify", "Git", "Protobuf",
+      "RAG", "Amazon Bedrock", "LLM", "Langchain", "Langgraph", "Claude", "Cursor", "MCP",
+    ],
+    experience: [
+      {
+        company: "Shikho Technologies",
+        role: "Software Engineer",
+        highlights: [
+          "Worked in a team of six engineers to build a complete platform, designing and implementing microservices using Go, Kubernetes, and AWS",
+          "Built scalable analytics services generating 10K+ reports daily, improving student performance tracking using Go concurrency, NATS, MongoStream, and Redis",
+          "Engineered services for Programs and Live Exam modules using Go routines, reducing latency by 40% and supporting high-concurrency workflows for 3M+ users",
+          "Implemented event-driven integrations with the in-house CRM system, streamlining workflows for 200+ agents and contributing to 30% subscriber growth using Machinery (async task queue)",
+          "Built a user-defined MCQ feature adopted by over 80% of enrolled users, becoming one of the platform's most popular features",
+          "Designed a MongoDB-to-PostgreSQL KPI pipeline enabling near real-time analytics and faster reporting for product teams",
+          "Migrated 50M+ records to UTC for multi-timezone support and integrated PayU payment and two-factor OTP verification for secure transactions in India",
+        ],
+      },
+      {
+        company: "Alxicorn",
+        role: "Blockchain Developer",
+        highlights: [
+          "Built backend services and reverse-engineered core modules of the Cosmos SDK (Tendermint) using Golang",
+          "Strengthened expertise in blockchain-based distributed system architecture and large-scale open-source codebases",
+          "Enhanced system design, debugging efficiency, unit testing, and technical documentation processes, accelerating knowledge sharing by 90% using AI-assisted tools",
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: "Scalable Analytics Pipeline",
+        description: "Built analytics services generating 10K+ daily reports for an EdTech platform serving 3M+ users. Used Go concurrency, NATS messaging, MongoStream change data capture, and Redis for real-time student performance tracking.",
+        tech: ["Go", "NATS", "MongoDB", "Redis", "MongoStream"],
+      },
+      {
+        name: "MongoDB-to-PostgreSQL KPI Pipeline",
+        description: "Designed a real-time change data pipeline migrating KPI data from MongoDB to PostgreSQL, enabling near real-time analytics dashboards and faster reporting for product and business teams.",
+        tech: ["Go", "MongoDB", "PostgreSQL", "CDC"],
+      },
+      {
+        name: "Smart Attendance System",
+        description: "Developed an automated face-detection-based attendance system using Python, OpenCV, and Flask, applying computer vision techniques for real-time detection and processing.",
+        tech: ["Python", "OpenCV", "Flask", "HTML", "CSS"],
+      },
+    ],
+  },
+  {
     id: "saad",
     name: "Shah Ahmed Saad Rupai",
     role: "Co-founder",
@@ -13,7 +75,7 @@ export const members: Member[] = [
     github: "https://github.com/saadrupai",
     isFounder: true,
     team: "backend",
-    teamRole: "Backend Team Lead",
+    teamRole: "Software Engineer",
     skills: [
       "Golang", "TypeScript", "Node.js", "Python", "JavaScript", "C", "C++",
       "PostgreSQL", "MySQL", "MongoDB",
